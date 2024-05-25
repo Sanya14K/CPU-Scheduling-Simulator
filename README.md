@@ -1,13 +1,13 @@
-##CPU Scheduling Simulator 
+## CPU Scheduling Simulator 
 
-#About
+# About
 The CPU Scheduling Algorithm Simulator is a web-based tool that allows users to interactively visualize various CPU scheduling algorithms. 
 
-#Features
+# Features
 - Visualization of 8 CPU Scheduling Algorithms using Gantt chart
 - User friendly interface for inserting algorithm parameters
 
-#Algorithms implemented
+# Algorithms implemented
 - First Come First Serve (FCFS)
 - Shortest Job First (SJF)
 - Shortest Remaining Time First (SRTF)
@@ -17,9 +17,9 @@ The CPU Scheduling Algorithm Simulator is a web-based tool that allows users to 
 - Priority CPU Scheduling (Preemptive)
 - Round Robin Scheduling (RRS)
 
-[🔗 Link](https://sanya14k.github.io/CPU-Scheduling-Simulator/)
+🔗 [Link](https://sanya14k.github.io/CPU-Scheduling-Simulator/)
 
-#Technologies Used
+# Technologies Used
 - HTML
 - CSS
 - Javascript
