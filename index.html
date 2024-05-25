@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    
+
+</head>
+<body>
+
+    <header>
+        <span id="navbar-text" >CPU Scheduling Simulator</span>
+    </header>
+
+    <div class="container">
+
+
+
+        <div class="input">
+            <div class="col-12 border p-3 mt-4 mb-4"id="algoSelect">
+                <div class="form">
+                    <div class="form-group">
+                        <label for="algorithmSelector"><b>Scheduling Algorithm</b></label>
+                        
+                        <select class="form-control" id="algorithmSelector">
+                            <option value="optFCFS">First Come First Served (FCFS)</option>
+                            <option value="optSJF">Shortest Job First (SJF)</option>
+                            <option value="optSRTF">Shortest Remaining Time First (SRTF)</option>
+                            <option value="optLJF">Longest Job First (LJF)</option>
+                            <option value="optLRTF">Longest Remaining Time First (LRTF)</option>
+                            <option value="optPriorityNP">Priority (Non-Preemptive)</option>
+                            <option value="optPriorityP">Priority (Preemptive)</option>
+                            <option value="optRR">Round Robin</option>
+                        </select>
+
+                        <p class="priority hideIt" id="note">(Lower priority number is assumed to have higher priority)</p>
+                    </div>
+                    
+
+                    <div class="hidden" id="tq">
+                        <label class="mt-1  "  ><b>Time Quantum</b></label>
+                        <input class="form-control mb-2"  type="number" min="0" id="timeQuantum" placeholder="90(by default)">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="processes">
+
+                <table class="table table-bordered table-condensed" id="ProcessListTable">
+                    <thead>
+                        <tr>
+                            <th  >Process ID</th>
+                            <th >Arrival Time</th>
+                            <th >Burst Time</th>
+                            <th class="priority hideIt">Priority</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="oldInput">
+                    
+                    </tbody>
+
+                    <tbody class="newInput">
+                        <tr class="data-row">
+                            <td><input class="form-control mb-2 p-0" type="text" id="processID" required readonly onfocus="this.blur()" style="font-size:inherit;"></td>
+                            <td><input class="form-control mb-2" type="number" min="0" id="arrivalTime" placeholder=""></td>
+                            <td><input class="form-control mb-2" type="number" min="0" id="burstTime" placeholder=""></td>
+                            <td class="priority hideIt"><input  class="form-control mb-2" type="number" min="0" id="priority" placeholder=""></td>
+                        </tr>
+                    </tbody>
+
+                    
+                </table>
+
+
+
+                <div class="row mb-5" >
+
+                    <div class="col-sm-1">
+                    </div>
+
+
+                    <div class="col-sm-5 mb-1 ">
+                        <button class="btn btn-primary mb-1" id="addProcessBtn" style="width: 45%;height: 3.8rem;border-radius:15px;">
+                            <span>Add Process</span> 
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </button>
+                        <button class="btn btn-primary mb-1" id="delProcessBtn" style="width: 45%;height: 3.8rem;border-radius:15px">
+                            <span>Delete Process</span>
+                            <i class="fa-solid fa-circle-minus"></i>
+                        </button>
+                    </div> 
+                    <div class="col-sm-5 mb-1">
+                        <button class="btn btn-primary mb-1" id="calculateBtn" style="width: 45%;height: 3.8rem;border-radius:15px">
+                            <span>Calculate</span>
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+                        <button class="btn btn-primary mb-1" id="resetBtn" style="width: 45%;height: 3.8rem;border-radius:15px">
+                            <span>Reset</span>
+                            <i class="fa-solid fa-rotate"></i>
+                        </button>
+                    </div>
+
+                    <div class="col-sm-1">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="" id="output">
+
+            <h1 style="text-align: center; font-size:2rem;">Output</h1>
+
+            
+
+            <div class="gantt">
+                <h4 class="hidden" id="gantt-heading">Gantt Chart</h4>
+
+            
+                <div class="col-12 outputTableContainer" id="otc">
+                    <table class="gantt-table">
+                        <tr class="gantt-table-tr">
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="outputTableContainer">
+                <table class="table table-bordered table-condensed mt-2 mb-3" id="outputTable" style="margin-bottom: 50px;">
+                    <thead>
+                        <tr>
+                            <th >Process</th>
+                            <th >Arrival Time</th>
+                            <th >Burst Time</th>
+                            <th class="priority hideIt" >Priority</th>
+                            <th >Completion Time</th>
+                            <th >Turn around Time</th>
+                            <th >Waiting Time</th>
+                            <th >Response Time</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody class="outputBody">
+                    </tbody>
+                </table>
+            </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- <footer class="page-footer bg-light p-2 mt-5">
+    
+    
+        <div class="footer-copyright text-center py-3">
+            <span>
+                Copyright &copy; Sanya Khurana |
+                <a target="_blank" href="">View Source on Github<i class="fa-brands fa-github"></i></a>
+            </span>
+        </div>
+    
+    </footer> -->
+
+    
+</body>
+
+
+
+
+
+<script src="script.js"></script>
+
+</html>
